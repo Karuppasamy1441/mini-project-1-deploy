@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>EmployeeDetail</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+          crossorigin="anonymous">
+
+    <style>
+        form{
+        margin:10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container-2 mx-5 "  >
+    <h2 class="mt-4"><i>Employee Details</i> </h2>
+
+    <form style="width:50%"  th:object="${employee}" >
+
+
+        <label>user FirstName</label>
+        <input type="text" th:field="*{userFirstName}"
+               class="form-control mb-4 cot-4"/>
+        <label>user LastName</label>
+        <input type="text" th:field="*{userLastName}"
+               class="form-control mb-4 cot-4"/>
+        <label>Email</label>
+        <input type="email" th:field="*{email}"
+               class="form-control mb-4 cot-4"/>
+        <label>Location</label>
+        <input type="text" th:field="*{location}"
+               class="form-control mb-4 cot-4"/>
+    </form>
+    <a th:href="@{/homePage}" class="btn btn-info btn-sm mb-3">Back</a>
+
+</div>
+
+</body>
+</html>
