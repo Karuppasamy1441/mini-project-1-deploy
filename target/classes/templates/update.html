@@ -10,18 +10,30 @@
 </head>
 <body>
 <div class="container-2 mx-5 mt-5"  >
-    <h2>Enter Employee Details for Updation</h2>
+    <h2>Enter Employee Details for Update</h2>
     <hr>
-    <form style="width:60%" action="#" th:action="@{/save}" th:object="${employee}" method="POST">
+    <form style="width:60%" action="#" th:action="@{/UpdateSave}" th:object="${employee}" method="POST">
 
-        <input type="text" th:field="*{userFirstName}" placeholder="userFirstname"
-               class="form-control mb-4 cot-4"/>
-        <input type="text" th:field="*{userLastName}" placeholder="userLastname"
-               class="form-control mb-4 cot-4"/>
-        <input type="email" th:field="*{email}" placeholder="Email"
-               class="form-control mb-4 cot-4"/>
-        <input type="text" th:field="*{location}" placeholder="location"
-               class="form-control mb-4 cot-4"/>
+        <input type="hidden" th:field="*{Id}">
+        <label>User FirstName :
+            <input type="text" th:field="*{userFirstName}" placeholder="userFirstname"
+                   class="form-control mb-4 cot-4"/>
+        </label><br>
+        <label>User LastName :
+            <input type="text" th:field="*{userLastName}" placeholder="userLastname"
+                   class="form-control mb-4 cot-4"/>
+        </label><br>
+        <label>Email :
+            <input type="email" th:field="*{email}" placeholder="Email"
+                   class="form-control mb-4 cot-4"/>
+        </label><br>
+        <div  th:if="${errorMessage!=null}">
+            <p class="text-danger" th:errors="${errorMessage}"></p>
+        </div>
+        <label>Location :
+            <input type="text" th:field="*{location}" placeholder="location"
+                   class="form-control mb-4 cot-4"/>
+        </label><br>
         <button type="submit" class="btn btn-info col-2">Update details</button>
 
     </form>

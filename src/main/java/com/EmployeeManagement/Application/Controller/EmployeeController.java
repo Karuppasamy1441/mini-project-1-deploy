@@ -53,6 +53,21 @@ public class EmployeeController {
         return "update";
     }
 
+    @PostMapping("/UpdateSave")
+    public String updateEmployeeDetails(@Valid @ModelAttribute("employee") Employee employee,BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "update";
+        }
+        try {
+            emoployeeService.addEmployeeDetails(employee);
+        } catch (EmailAlreadyExistsException e) {
+            model.addAttribute("errorMessage", e.getMessage());
+            return "update";
+        }
+
+        return "redirect:/homePage";
+    }
+
     @GetMapping("/getEmployee/{id}")
     public String  getEmployeeById(@PathVariable Long  id,Model model){
         Employee employee=emoployeeService.getEmployeeDetailsById(id);
